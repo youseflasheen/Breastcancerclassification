@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4caf50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            color: #256029;
+            font-size: 16px;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+        <form action="/predict" method="post">
+            <!-- Input fields for all features -->
+            <label for="radius_mean">radius_mean:</label>
+            <input type="text" id="radius_mean" name="radius_mean" required>
+
+            <label for="texture_mean">texture_mean:</label>
+            <input type="text" id="texture_mean" name="texture_mean" required>
+
+            <label for="smoothness_mean">smoothness_mean:</label>
+            <input type="text" id="smoothness_mean" name="smoothness_mean" required>
+
+            <label for="compactness_mean">compactness_mean:</label>
+            <input type="text" id="compactness_mean" name="compactness_mean" required>
+
+            <label for="symmetry_mean">symmetry_mean:</label>
+            <input type="text" id="symmetry_mean" name="symmetry_mean" required>
+
+            <label for="fractal_dimension_mean">fractal_dimension_mean:</label>
+            <input type="text" id="fractal_dimension_mean" name="fractal_dimension_mean" required>
+
+            <label for="radius_se">radius_se:</label>
+            <input type="text" id="radius_se" name="radius_se" required>
+
+            <label for="texture_se">texture_se:</label>
+            <input type="text" id="texture_se" name="texture_se" required>
+
+            <label for="smoothness_se">smoothness_se:</label>
+            <input type="text" id="smoothness_se" name="smoothness_se" required>
+
+            <label for="compactness_se">compactness_se:</label>
+            <input type="text" id="compactness_se" name="compactness_se" required>
+
+            <label for="concave points_se">concave points_se:</label>
+            <input type="text" id="concave points_se" name="concave points_se" required>
+
+            <label for="symmetry_se">symmetry_se:</label>
+            <input type="text" id="symmetry_se" name="symmetry_se" required>
+
+            <label for="symmetry_worst">symmetry_worst:</label>
+            <input type="text" id="symmetry_worst" name="symmetry_worst" required>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction_text %}
+            <div class="prediction">
+                <p>{{ prediction_text }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
